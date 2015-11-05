@@ -3,8 +3,8 @@
     <head>
         <link rel="icon" type="image/x-icon" href="../res/favicon.ico"> 
         <link rel = "stylesheet" href = "../res/header.css" type = "text/css" />
-		<link rel = "stylesheet" href = "../res/footer.css" type = "text/css" />
-		<link rel = "stylesheet" href = "../res/style.css" type = "text/css" />
+	<link rel = "stylesheet" href = "../res/footer.css" type = "text/css" />
+	<link rel = "stylesheet" href = "../res/style.css" type = "text/css" />
         <title>Mandelbrot Set</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,13 +30,13 @@
             varying vec3 pos;
             
             void main() {
-                //vec3 color = vec3(0.0);
-                //for(int i = 0; i < 10; i++)
-                    //color += 20.0/length(gl_FragCoord.xy - vec2(400.0+200.0*sin((2.0*time+sin(time))+3.1415/5.0*float(i)), 400.0+200.0*sin(4.0*sin(((2.0*time+cos(2.0*time))+3.1415/5.0*float(i))))))*vec3(0.1*float(i));
+                vec3 color = vec3(0.0);
+                for(int i = 0; i < 10; i++)
+                    color += 20.0/length(gl_FragCoord.xy - vec2(400.0+200.0*sin((2.0*time+sin(time))+3.1415/5.0*float(i)), 400.0+200.0*sin(4.0*sin(((2.0*time+cos(2.0*time))+3.1415/5.0*float(i))))))*vec3(0.1*float(i));
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0-200.0*sin(time), 400.0))*vec3(0.25, 0.75, 1.0);
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0, 400.0+200.0*sin(time)))*vec3(1.0,1.0,0.5);
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0, 400.0-200.0*sin(time)))*vec3(0.75, 1.0, 1.0);
-                gl_FragColor = vec4(pos, 1.0);
+                gl_FragColor = vec4(pos+color, 1.0);
             }
         </script>
         <script src = "../lib/Lib.js"></script>
@@ -51,22 +51,67 @@
             var vbo;
             var pMatrix;
             var mvMatrix;
+            
+            var relativePos = new Vector3f(0, 0, 0);
+            var velocity = new Vector3f(0,0,0);
+            var speed = 1;
+            var cameraRotation = new Vector3f(0,0,0);
             function webGLStart() {
                 canvas = document.getElementById('canvas');
+                canvas.width  = window.innerWidth;
+                canvas.height  = window.innerHeight;
                 initGL(canvas);
                 //initFrameBuffer();
                 initShaders();
                 initBuffers();
                 init();
-//                canvas.addEventListener("mousemove", function(event){
-//                        var mousePos = getMousePos(canvas, event);
-//                        var x = mousePos.x/400-1.5;
-//                        var y = 2*(mousePos.y/400-1);
-//                        document.getElementById('coords').innerHTML = "X: " + x + ", Y: " + y;
-//                }, false);
-                
+                canvas.addEventListener("mousemove", function(event){
+                    if(document.pointerLockElement === canvas ||
+                        document.mozPointerLockElement === canvas ||
+                        document.webkitPointerLockElement === canvas) {
+                        cameraRotation.y += (event.movementX || event.mozMovementX || event.MovementX || 0)/500;
+                        cameraRotation.x += Math.abs(Math.cos(cameraRotation.y))*(event.movementY || event.mozMovementY || event.MovementY || 0)/500;
+                        cameraRotation.z += Math.sin(cameraRotation.y)*(event.movementY || event.mozMovementY || event.MovementY || 0)/500;
+                        if((cameraRotation.y > 2*Math.PI) || (cameraRotation.y < -2*Math.PI))
+                            cameraRotation.y = 0;
+                        document.getElementById('test').innerHTML = "X: " + cameraRotation.x + " Z: " + cameraRotation.z;
+                    }
+                        mousePos = getMousePos(canvas, event);
+                }, true);
+                addEventListener("keydown", function(event){
+                        if(event.keyCode === 87){//w
+                            velocity.z = speed;
+                        }else if(event.keyCode === 83){//s
+                            velocity.z = -speed;
+                        }else if(event.keyCode === 65){//d
+                            velocity.x = speed;
+                        }else if(event.keyCode === 68){//a
+                            velocity.x = -speed;
+                        }else if(event.keyCode === 32){//space
+                            velocity.y = -speed;
+                        }else if(event.keyCode === 16){//a
+                            velocity.y = speed;
+                        }else if(event.keyCode === 90){//z
+                            cameraRotation.y = cameraRotation.x = cameraRotation.z = 0;
+                        }
+                }, true);
+                addEventListener("keyup", function(event){
+                        if(event.keyCode === 87 || event.keyCode === 83){//w
+                            velocity.z = 0;
+                        }else if(event.keyCode === 65 || event.keyCode === 68){//d
+                            velocity.x = 0;
+                        }else if(event.keyCode === 32 || event.keyCode === 16){//d
+                            velocity.y = 0;
+                        }
+                }, true);
+                window.onkeydown = function(e) {
+					if(e.keyCode == 32 && e.target != document.body) {
+						e.preventDefault();
+						return false;
+					}
+				};
                 gl.enable(gl.DEPTH_TEST);
-                gl.clearColor(0.0,0.0,0.0,1.0);
+                gl.clearColor(0.0,0.0,0.0,0.0);
                 tick();
             }
             function initGL(canvas){
@@ -189,13 +234,15 @@
                 render();
             }
             function update(){
-                
+                relativePos.x += velocity.z*Math.sin(-cameraRotation.y)+velocity.x*Math.cos(cameraRotation.y);
+                relativePos.z += velocity.z*Math.cos(cameraRotation.y)+velocity.x*Math.sin(cameraRotation.y);
+                relativePos.y += velocity.y;
             }
             function render(){
                 gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
                 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
                 
-                mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 100.0, pMatrix);
+                mat4.perspective(45, gl.viewportWidth / gl.viewportHeight, 0.1, 1000.0, pMatrix);
                 mat4.identity(mvMatrix);
                 
                 gl.useProgram(program);
@@ -206,8 +253,12 @@
                 var num = 10;
                 for(i = 0; i < num; i++){
                     mat4.identity(mvMatrix);
-                    mat4.translate(mvMatrix, [8*Math.sin(time + i * Math.PI/num), 8*Math.cos(time + i * Math.PI/num), -40-10*Math.sin(time + i * Math.PI/num)]);
+                    mat4.rotateX(mvMatrix, cameraRotation.x, mvMatrix);
+                    mat4.rotateY(mvMatrix, cameraRotation.y, mvMatrix);
+                    mat4.rotateZ(mvMatrix, cameraRotation.z, mvMatrix);
+                    mat4.translate(mvMatrix, [relativePos.x + 8*Math.sin(time + i * Math.PI/num), relativePos.y + 8*Math.cos(time + i * Math.PI/num), relativePos.z + -40-10*Math.sin(time + i * Math.PI/num)]);
                     mat4.rotate(mvMatrix, time, [0, 1, 0]);
+                    //mat4.scale(mvMatrix, [4,4,4], mvMatrix);
                     setUniforms();
                     gl.drawArrays(gl.TRIANGLES, 0, vbo.length/3);
                 }
@@ -220,11 +271,12 @@
             var mousePos = new Vector2f(0,0);
             function canvasClick(event){
                 mousePos = getMousePos(canvas, event);
+                canvas.requestPointerLock();
             }
         </script>
     </head>
     <body onload = "webGLStart()">
-        <canvas id="canvas" style="border: none; margin: 1em"
+        <canvas tabindex = "1" id="canvas" style="border: none; margin: 1em; outline:none"
                 width="800" height="800" onclick="canvasClick(event)"></canvas>
         <hr>
                 
@@ -237,7 +289,7 @@
 					<ul class = "dropup">
 						<li><a href = "../stars/index.html"> Stars </a></li>
 						<li><a href = "../mandelbrot/index.html"> Mandelbrot </a></li>
-						<li><a href = "../cubes/index.html"> Cubes </a></li>
+                                                <li><a href = "../cubes/index.html"> Cubes </a></li>
 					</ul>
 			</li>
 		</ul>
@@ -251,6 +303,7 @@
 			<li class="twitch"><a href="http://www.twitch.tv/Legendaries"></a></li>
 		</ul>
 	</div>
+    <dir id = "test"></dir>
         <br><br>
     </body>
 </html>
