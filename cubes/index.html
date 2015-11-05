@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="icon" type="image/x-icon" href="../res/favicon.ico"> 
-		<link rel = "stylesheet" href = "../res/header.css" type = "text/css" />
+        <link rel = "stylesheet" href = "../res/header.css" type = "text/css" />
 		<link rel = "stylesheet" href = "../res/footer.css" type = "text/css" />
 		<link rel = "stylesheet" href = "../res/style.css" type = "text/css" />
         <title>Mandelbrot Set</title>
@@ -16,9 +16,10 @@
             uniform mat4 pMatrix;
             uniform mat4 mvMatrix;
             uniform float time;
+            varying vec3 pos;
             
             void main() {
-                gl_PointSize = 2.0;
+                pos = position;
                 gl_Position = pMatrix * mvMatrix * vec4(position, 1.0);
             }
         </script>
@@ -26,16 +27,16 @@
         <script id = "shader-fs" type = "x-shader/x-fragment">
             precision mediump float;
             uniform float time;
-//            varying vec3 pos;
+            varying vec3 pos;
             
             void main() {
-                vec3 color = vec3(0.0);
-                for(int i = 0; i < 10; i++)
-                    color += 20.0/length(gl_FragCoord.xy - vec2(400.0+200.0*sin((2.0*time+sin(time))+3.1415/5.0*float(i)), 400.0+200.0*sin(4.0*sin(((2.0*time+cos(2.0*time))+3.1415/5.0*float(i))))))*vec3(0.1*float(i));
+                //vec3 color = vec3(0.0);
+                //for(int i = 0; i < 10; i++)
+                    //color += 20.0/length(gl_FragCoord.xy - vec2(400.0+200.0*sin((2.0*time+sin(time))+3.1415/5.0*float(i)), 400.0+200.0*sin(4.0*sin(((2.0*time+cos(2.0*time))+3.1415/5.0*float(i))))))*vec3(0.1*float(i));
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0-200.0*sin(time), 400.0))*vec3(0.25, 0.75, 1.0);
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0, 400.0+200.0*sin(time)))*vec3(1.0,1.0,0.5);
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0, 400.0-200.0*sin(time)))*vec3(0.75, 1.0, 1.0);
-                gl_FragColor = vec4(color, 1.0);
+                gl_FragColor = vec4(pos, 1.0);
             }
         </script>
         <script src = "../lib/Lib.js"></script>
@@ -122,39 +123,66 @@
             function initBuffers(){
                 vbo = gl.createBuffer();
                 
-//                var vertices = new Float32Array([
-//                    -1, -1, 0,
-//                    -1, 1, 0,
-//                    1, -1, 0,
-//                    1, 1, 0,
-//                    -1, 1, 0,
-//                    1, -1, 0
-//                ]);
-		
                 var vertices = new Float32Array([
-                    0,0,0
+                    -1, -1, -1,
+                    -1, 1, -1,
+                    1, -1, -1,
+                    1, 1, -1,
+                    -1, 1, -1,
+                    1, -1, -1,
+                    
+                    -1, -1, 1,
+                    -1, 1, 1,
+                    1, -1, 1,
+                    1, 1, 1,
+                    -1, 1, 1,
+                    1, -1, 1,
+                    
+                    1, -1, -1,
+                    1, -1, 1,
+                    1, 1, 1,
+                    1, 1, 1,
+                    1, -1, -1,
+                    1, 1, -1,
+                    
+                    -1, -1, -1,
+                    -1, -1, 1,
+                    -1, 1, 1,
+                    -1, 1, 1,
+                    -1, -1, -1,
+                    -1, 1, -1,
+                    
+                    -1, -1, -1,
+                    -1, -1, 1,
+                    1, -1, 1,
+                    1, -1, 1,
+                    -1, -1, -1,
+                    1, -1, -1,
+                    
+                    -1, 1, -1,
+                    -1, 1, 1,
+                    1, 1, 1,
+                    1, 1, 1,
+                    -1, 1, -1,
+                    1, 1, -1
                 ]);
-                
+		
                 gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
                 gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
                 vbo.size = 3;
                 vbo.length = vertices.length;
             }
-            var pos = [];
             function init(){
                 mvMatrix = mat4.create();
                 pMatrix = mat4.create();
-                for(i = 0; i < num; i++){
-                    pos.push(new Vector3f(30*(Math.random()-0.5), 30*(Math.random()-0.5),-200*(Math.random())));
-                }
             }
-//            function getMousePos(canvas, evt){
-//                var rect = canvas.getBoundingClientRect();
-//                return {
-//                    x: evt.clientX - rect.left,
-//                    y: evt.clientY - rect.top
-//                };
-//            }
+            function getMousePos(canvas, evt){
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: evt.clientX - rect.left,
+                    y: evt.clientY - rect.top
+                };
+            }
             function tick(){
                 requestAnimFrame(tick);
                 update();
@@ -163,8 +191,6 @@
             function update(){
                 
             }
-            var num = 10000;
-            var z = -30;
             function render(){
                 gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
                 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -177,56 +203,54 @@
                 gl.enableVertexAttribArray(program.position);
                 gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
                 gl.vertexAttribPointer(program.position, 3, gl.FLOAT, false, 0, 0);
-                
+                var num = 10;
                 for(i = 0; i < num; i++){
                     mat4.identity(mvMatrix);
-                    mat4.translate(mvMatrix, [pos[i].x, pos[i].y, z +pos[i].z]);
-//                    mat4.translate(mvMatrix, [8*Math.sin(10*time + i * Math.PI/num), 8*Math.cos(10*time + i * Math.PI/num), -40-10*Math.sin(time + i * Math.PI/num)]);
-//                    mat4.rotate(mvMatrix, time, [0, 1, 0]);
+                    mat4.translate(mvMatrix, [8*Math.sin(time + i * Math.PI/num), 8*Math.cos(time + i * Math.PI/num), -40-10*Math.sin(time + i * Math.PI/num)]);
+                    mat4.rotate(mvMatrix, time, [0, 1, 0]);
                     setUniforms();
-                    gl.drawArrays(gl.POINTS, 0, vbo.length/3);
+                    gl.drawArrays(gl.TRIANGLES, 0, vbo.length/3);
                 }
-                z+=1;
             }
             function setUniforms(){
                 gl.uniform1f(program.time, time = Date.now()/1000-1446690700);
                 gl.uniformMatrix4fv(program.pMatrixUniform, false, pMatrix);
                 gl.uniformMatrix4fv(program.mvMatrixUniform, false, mvMatrix);
             }
+            var mousePos = new Vector2f(0,0);
             function canvasClick(event){
-                z = -30;
+                mousePos = getMousePos(canvas, event);
             }
         </script>
     </head>
     <body onload = "webGLStart()">
-		<!-- Header -->
-		<div id = "header">
-			<ul id = "header_menu">
-				<li><a href = "../index.html">Home</a></li>
-				<li>
-					<a href = ""> WebGL </a>
-						<ul class = "dropup">
-							<li><a href = "index.html"> Stars </a></li>
-							<li><a href = "../mandelbrot/index.html"> Mandelbrot </a></li>
-							<li><a href = "../cubes/index.html"> Cubes </a></li>
-						</ul>
-				</li>
-			</ul>
-		</div>
         <canvas id="canvas" style="border: none; margin: 1em"
                 width="800" height="800" onclick="canvasClick(event)"></canvas>
         <hr>
-		<br><br>
-		<p id = "coords"/>
-		<!-- Footer -->
-		<div id="footer">
-			<ul id = "footer_menu">
-				<li class="homeButton"><a href="../index.html"></a></li>
-				<li class="youtube"><a href="http://www.youtube.com/user/xlegendaries"></a></li>
-				<li class="git"><a href="http://www.github.com/Legendaries"></a></li>
-				<li class="twitch"><a href="http://www.twitch.tv/Legendaries"></a></li>
-			</ul>
-		</div>
-		<hr>
+                
+        <!-- Header -->
+	<div id = "header">
+		<ul id = "header_menu">
+			<li><a href = "../index.html">Home</a></li>
+			<li>
+				<a> WebGL </a>
+					<ul class = "dropup">
+						<li><a href = "../stars/index.html"> Stars </a></li>
+						<li><a href = "../mandelbrot/index.html"> Mandelbrot </a></li>
+						<li><a href = "../cubes/index.html"> Cubes </a></li>
+					</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- Footer -->
+	<div id="footer">
+		<ul id = "footer_menu">
+			<li class="homeButton"><a href="../index.html"></a></li>
+			<li class="youtube"><a href="http://www.youtube.com/user/xlegendaries"></a></li>
+			<li class="git"><a href="http://www.github.com/Legendaries"></a></li>
+			<li class="twitch"><a href="http://www.twitch.tv/Legendaries"></a></li>
+		</ul>
+	</div>
+        <br><br>
     </body>
 </html>

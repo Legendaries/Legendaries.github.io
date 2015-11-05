@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" type="image/x-icon" href="./favicon.ico"> 
+        <link rel="icon" type="image/x-icon" href="../res/favicon.ico"> 
+		<link rel = "stylesheet" href = "../res/header.css" type = "text/css" />
+		<link rel = "stylesheet" href = "../res/footer.css" type = "text/css" />
+		<link rel = "stylesheet" href = "../res/style.css" type = "text/css" />
         <title>Mandelbrot Set</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +44,7 @@
                     gl_FragColor = vec4(f, f, f, 1);
             }
         </script>
-        <script src = "Lib.js"></script>
+        <script src = "../lib/Lib.js"></script>
         <script>
             var program;
             var gl;
@@ -149,5 +152,29 @@
         <button type = "button" onclick="reset();">Reset</button>
 		<hr>
 		<p id = "coords"/>
+		<!-- Header -->
+		<div id = "header">
+			<ul id = "header_menu">
+				<li><a href = "../index.html">Home</a></li>
+				<li>
+					<a> WebGL </a>
+						<ul class = "dropup">
+							<li><a href = "../stars/index.html"> Stars </a></li>
+							<li><a href = "../mandelbrot/index.html"> Mandelbrot </a></li>
+							<li><a href = "../cubes/index.html"> Cubes </a></li>
+						</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- Footer -->
+		<div id="footer">
+			<ul id = "footer_menu">
+				<li class="homeButton"><a href="../index.html"></a></li>
+				<li class="youtube"><a href="http://www.youtube.com/user/xlegendaries"></a></li>
+				<li class="git"><a href="http://www.github.com/Legendaries"></a></li>
+				<li class="twitch"><a href="http://www.twitch.tv/Legendaries"></a></li>
+			</ul>
+		</div>
+		<br><br>
     </body>
 </html>
