@@ -27,12 +27,13 @@
         <script id = "shader-fs" type = "x-shader/x-fragment">
             precision mediump float;
             uniform float time;
+            uniform vec2 resolution;
             varying vec3 pos;
             
             void main() {
                 vec3 color = vec3(0.0);
                 for(int i = 0; i < 10; i++)
-                    color += 20.0/length(gl_FragCoord.xy - vec2(400.0+200.0*sin((2.0*time+sin(time))+3.1415/5.0*float(i)), 400.0+200.0*sin(4.0*sin(((2.0*time+cos(2.0*time))+3.1415/5.0*float(i))))))*vec3(0.1*float(i));
+                    color += 20.0/length(gl_FragCoord.xy - vec2(resolution.x+resolution.x/4.0*sin((2.0*time+sin(time))+3.1415/5.0*float(i)), resolution.y+resolution.y/4*sin(4.0*sin(((2.0*time+cos(2.0*time))+3.1415/5.0*float(i))))))*vec3(0.1*float(i));
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0-200.0*sin(time), 400.0))*vec3(0.25, 0.75, 1.0);
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0, 400.0+200.0*sin(time)))*vec3(1.0,1.0,0.5);
 //                color += 20.0/length(gl_FragCoord.xy - vec2(400.0, 400.0-200.0*sin(time)))*vec3(0.75, 1.0, 1.0);
@@ -161,6 +162,7 @@
                 program.position = gl.getAttribLocation(program, 'position');
                 
                 program.time = gl.getUniformLocation(program, 'time');
+                program.resolution = gl.getUniformLocation(program, 'resolution');
                 
                 program.pMatrixUniform = gl.getUniformLocation(program, 'pMatrix');
                 program.mvMatrixUniform = gl.getUniformLocation(program, 'mvMatrix');
@@ -264,6 +266,7 @@
                 }
             }
             function setUniforms(){
+            	gl.uniform2f(program.resolution, gl.viewportWidth, gl.viewportHeight);
                 gl.uniform1f(program.time, time = Date.now()/1000-1446690700);
                 gl.uniformMatrix4fv(program.pMatrixUniform, false, pMatrix);
                 gl.uniformMatrix4fv(program.mvMatrixUniform, false, mvMatrix);
