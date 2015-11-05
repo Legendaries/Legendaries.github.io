@@ -141,7 +141,7 @@
                 gl.compileShader(vertexShader);
 
                 if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS)) {
-                    alert(gl.getShaderInfoLog(shader));
+                    alert(gl.getShaderInfoLog(vertexShader));
                     return null;
                 }
 
@@ -150,7 +150,7 @@
                 gl.compileShader(fragmentShader);
 
                 if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
-                    alert(gl.getShaderInfoLog(shader));
+                    alert(gl.getShaderInfoLog(fragmentShader));
                     return null;
                 }
 
