@@ -39,7 +39,6 @@
                     gl_FragColor = vec4(0, 0, 0, 1);
                 else
                     gl_FragColor = vec4(f, f, f, 1);
-                    gl_FragColor = vec4(1.0,1.0,1.0,1.0);
             }
         </script>
         <script src = "Lib.js"></script>
@@ -51,12 +50,12 @@
             var canvas;
             function webGLStart() {
                 canvas = document.getElementById('canvas');
-				canvas.addEventListener("mousemove", function(event){
-					var mousePos = getMousePos(canvas, event);
-					var x = mousePos.x/400-1.5;
-					var y = 2*(mousePos.y/400-1);
-					document.getElementById('coords').innerHTML = "X: " + x + ", Y: " + y;
-				}, false);
+		canvas.addEventListener("mousemove", function(event){
+			var mousePos = getMousePos(canvas, event);
+			var x = mousePos.x/400-1.5;
+			var y = 2*(mousePos.y/400-1);
+			document.getElementById('coords').innerHTML = "X: " + x + ", Y: " + y;
+		}, false);
                 gl = canvas.getContext('webgl');
                 gl.enable(gl.DEPTH_TEST);
                 gl.clearColor(1, 0, 1, 1);
