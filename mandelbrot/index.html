@@ -39,9 +39,9 @@
                 }
                 float f = float(iter)/50.0;
                 if(iter == 200)
-                    gl_FragColor = vec4(0, 0, 0, 1);
+                    gl_FragColor = vec4(0, 0, 0, 0.0);
                 else
-                    gl_FragColor = vec4(f, f, f, 1);
+                    gl_FragColor = vec4(f, f, f, 1.0-f);
             }
         </script>
         <script src = "../lib/Lib.js"></script>
