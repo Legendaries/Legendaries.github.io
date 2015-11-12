@@ -24,7 +24,7 @@
             
             void main() {
                 vec2 z = vec2(0,0);
-                vec2 c = zoom*gl_FragCoord.xy/vec2(2048, 2048)+offset;
+                vec2 c = 8*gl_FragCoord.xy/vec2(3641, 2048)+offset;
                 int iter;
                 for(int i = 0; i <= 200; i++)
                 {
@@ -39,9 +39,9 @@
                 }
                 float f = float(iter)/50.0;
                 if(iter == 200)
-                    gl_FragColor = vec4(0, 0, 0, 0.0);
+                    gl_FragColor = vec4(0, 0, 0, 1.0);
                 else
-                    gl_FragColor = vec4(f, f, f, 1.0-f);
+                    gl_FragColor = vec4(f, f, f, f);
             }
         </script>
         <script src = "../lib/Lib.js"></script>
@@ -144,7 +144,7 @@
     </head>
     <body onload = "webGLStart()">
         <canvas id="canvas" style="border: none; margin: 1em"
-                width="2048" height="2048" onclick="canvasClick(event)"></canvas>
+                width="3641" height="2048" onclick="canvasClick(event)"></canvas>
         <hr>
         <input id = "xPoint" type = "text" value = "0">
         <input id = "yPoint" type = "text" value = "0">
