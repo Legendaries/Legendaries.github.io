@@ -39,7 +39,7 @@
                     if(z.x * z.x + z.y * z.y > 4.0)
                         break;
                 }
-                float f = float(iter)/200.0;
+                float f = float(iter)/50.0;
                 vec3 color = mix(startColor, endColor, f);
                 if(iter == 200)
                     gl_FragColor = vec4(0, 0, 0, 1.0);
