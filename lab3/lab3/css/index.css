@@ -1,0 +1,40 @@
+h1 {
+	font-family: sans-serif;
+	font-size: 50px;
+    background-color: #E6E6BE;
+    text-align: center;
+}
+
+h2 {
+    font-family: serif;
+    font-size: 30px;
+	background-color: #ff0000;
+	font-style: italic;
+	font-variant: small-caps;
+	letter-spacing: 5px;
+}
+
+body {
+    background-image: url("../images/prettyPattern.gif");
+    background-repeat: repeat;
+}
+
+li {
+	word-spacing: 10px;
+}
+
+p {
+	text-decoration: overline;
+	font-weight: 900;
+}
+
+a:hover{
+	color: yellow;
+	text-transform: uppercase;
+	text-decoration: none;
+	background-color: #FFFF96;
+}
+
+b {
+	color: blue;
+}
