@@ -45,6 +45,7 @@
 			}
 			
 			function rotateCube(event){
+				document.getElementById("cube").style.transition = "transform 1s;";
 				mouseDX = mouseX - event.clientX;
 				mouseDY = mouseY - event.clientY;
 				if(mouseDown){
@@ -76,9 +77,25 @@
 				mouseX = event.clientX;
 				mouseY = event.clientY;
 			}
+			
+			function lookAtMouse(event){
+				document.getElementById("cube").style.transition = "transform 0.2s;";
+				mouseX = event.clientX;
+				mouseY = event.clientY;
+				
+				rotation.x = (mouseX/screen.width-0.25)*180;
+				
+				rotation.y = clamp(-(mouseY/screen.height-0.25)*180, -90, 90);
+				
+				document.getElementById('cube').style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";
+			}
+			
+			function clamp(value, min, max){
+				return value < min ? min : value > max ? max : value;
+			}
 		</script>
     </head>
-    <body onload = "init()">
+    <body onload = "init()"">
         <h1> Dan The Man Church </h1><hr>
 		<img onmouseenter = "this.src='images/bellahover.jpg'" onmouseleave="this.src='images/bella.jpg'" src = "images/bella.jpg" alt = "altinfo" ><br>
 		<p id = "time"> </p>
@@ -112,5 +129,14 @@
 		<button onclick = 'rotation.x = 0; rotation.y = 270; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 5 </button>
 		<button onclick = 'rotation.x = 0; rotation.y = 90; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 6 </button>
 		<button onclick = 'rotation.x = Math.random()*720; rotation.y = Math.random()*720; rotation.z = Math.random()*720; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Random </button>
+		
+		<br><br><br><br><br>
+		
+		<section class = "imageContainer">
+			<div id = "images">
+				<img src = "images/bella.jpg" class = "test"></img>
+				<img src = "images/bellahover.jpg"></img>
+			</div>
+		</section>
     </body>
 </html>
