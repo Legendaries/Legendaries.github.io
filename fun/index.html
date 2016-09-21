@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dan The Man's Website</title>
+		
+		<link rel="stylesheet" type="text/css" href='css/index.css'>
+		<script>
+			function init(){
+				setTime();
+				setInterval(setTime, 1000);
+			}
+			function setTime(){
+				var d = new Date();
+				if(d.getHours() > 12)
+					var timeDiv = document.getElementById("time").innerHTML = "It is " + (d.getHours()-12) + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()) + ":" + (d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds()) + " PM";
+				else
+					var timeDiv = document.getElementById("time").innerHTML = "It is " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()) + ":" + (d.getSeconds() < 10 ? "0" + d.getSeconds() : d.getSeconds()) + " AM";
+			}
+			
+			
+			var mouseX = 0;
+			var mouseY = 0;
+			
+			var mouseDX = 0;
+			var mouseDY = 0;
+			
+			var rotation = new Object();
+			rotation.x = 0;
+			rotation.y = 0;
+			rotation.z = 0;
+			
+			var scale = 1;
+			
+			var mouseDown = false;
+			
+			function mouseDownEvent(event){
+				mouseX = event.clientX;
+				mouseY = event.clientY;
+				mouseDown = true;
+			}
+			
+			function mouseUpEvent(event){
+				mouseDown = false;
+			}
+			
+			function rotateCube(event){
+				mouseDX = mouseX - event.clientX;
+				mouseDY = mouseY - event.clientY;
+				if(mouseDown){
+					if(event.button == 0){
+						
+						rotation.x -= mouseDX;
+						rotation.y += mouseDY;
+						
+						document.getElementById('cube').style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";
+						
+						/*
+						if(mouseDX > 0 && mouseDX > mouseDY){ //turn left?
+							if(document.getElementById('cube').className == 'show-front') document.getElementById('cube').className = 'show-right';
+							else if(document.getElementById('cube').className == 'show-right') document.getElementById('cube').className = 'show-back';
+							else if(document.getElementById('cube').className == 'show-back') document.getElementById('cube').className = 'show-left';
+							else if(document.getElementById('cube').className == 'show-left') document.getElementById('cube').className = 'show-front';
+						}else if(mouseDX < 0 && mouseDX < mouseDY){
+							if(document.getElementById('cube').className == 'show-front') document.getElementById('cube').className = 'show-left';
+							else if(document.getElementById('cube').className == 'show-left') document.getElementById('cube').className = 'show-back';
+							else if(document.getElementById('cube').className == 'show-back') document.getElementById('cube').className = 'show-right';
+							else if(document.getElementById('cube').className == 'show-right') document.getElementById('cube').className = 'show-front';
+						}
+						*/
+					}else{
+						scale -= mouseDX/100;
+						document.getElementById('cube').style.transform = "scale(" + scale + ")";
+					}
+				}
+				mouseX = event.clientX;
+				mouseY = event.clientY;
+			}
+		</script>
+    </head>
+    <body onload = "init()">
+        <h1> Dan The Man Church </h1><hr>
+		<img onmouseenter = "this.src='images/bellahover.jpg'" onmouseleave="this.src='images/bella.jpg'" src = "images/bella.jpg" alt = "altinfo" ><br>
+		<p id = "time"> </p>
+		<a href = "http://validator.w3.org/"> HTML Validator </a>
+		<section class="container">
+		  <div id="card" onclick = "
+				if(document.getElementById('card').className == 'flipped')
+					document.getElementById('card').className = 'flip'
+				else
+					document.getElementById('card').className = 'flipped'">
+			<figure class="front">1</figure>
+			<figure class="back">2</figure>
+		  </div>
+		</section>
+		<br><br><br>
+		<section class="cubeContainer">
+		  <div id="cube" class = "show-front" onmouseleave = "mousePressed = false" onmousemove = "rotateCube(event)" onmousedown = "mouseDownEvent(event)" onmouseup = "mouseUpEvent(event)">
+			<figure class="front">1</figure>
+			<figure class="back">2</figure>
+			<figure class="right">3</figure>
+			<figure class="left">4</figure>
+			<figure class="top">5</figure>
+			<figure class="bottom">6</figure>
+		  </div>
+		</section>
+		<br><br><br><br><br><br><br>
+		<button onclick = 'rotation.x = rotation.y = rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 1 </button>
+		<button onclick = 'rotation.x = 180; rotation.y = 0; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 2 </button>
+		<button onclick = 'rotation.x = 270; rotation.y = 0; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 3 </button>
+		<button onclick = 'rotation.x = 90; rotation.y = 0; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 4 </button>
+		<button onclick = 'rotation.x = 0; rotation.y = 270; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 5 </button>
+		<button onclick = 'rotation.x = 0; rotation.y = 90; rotation.z = 0; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Face 6 </button>
+		<button onclick = 'rotation.x = Math.random()*720; rotation.y = Math.random()*720; rotation.z = Math.random()*720; document.getElementById("cube").style.transform = "rotateY(" + rotation.x + "deg) rotateX(" + rotation.y + "deg)";'> Random </button>
+    </body>
+</html>
