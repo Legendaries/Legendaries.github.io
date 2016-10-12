@@ -1,0 +1,89 @@
+body {
+	background:url(../images/bckgrnd.jpg) repeat-x;
+	margin-top: 0px;
+	text-align: center;
+}
+
+div#wrapper{
+	width: 850px;
+	margin: auto;
+	padding: 0px;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+
+div#header{
+	margin: 0px;
+	padding: 0px;
+	width: 850px;
+	height: 205px;
+	background: url(../images/banner.jpg);
+}
+
+div#navholder{
+	width: 850px;
+	height: 25px;
+	background: url(../images/nav_back.png) repeat-x;
+}
+
+div #nav {
+	padding: 0px;
+	margin: 0px;
+}
+
+div #container{
+	width: 850px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #FFFFFF;
+}
+
+div#leftCol {
+	float: left;
+	width: 525px;
+	padding: 10px 10px 10px 15px;
+}
+
+div#rightCol {
+	float: right;
+	width: 275px;
+	padding: 10px 10px 15px 15px;
+}
+
+div#footer{
+	background-color:#000000;
+	padding: 0px;
+	margin: 0x;
+	width: 850px;
+	height: 25px;
+	clear: both;
+}
+
+#navholder #nav li {
+	margin:0px;
+	padding:0px;
+	float: left;
+	display: inline;
+	list-style-type:none;
+}
+
+#nav a:link, #nav a:visited, #nav a:active{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#000;
+	text-decoration: none;
+	letter-spacing: 2px;
+	text-align:center;
+	display:block;
+	height:21px;
+	width:120px;
+	padding-top:4px;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color:#777;
+}
+
+#nav a:hover {
+   	background-image: url(../images/nav_on.png);	
+	background-repeat: repeat-x;
+}

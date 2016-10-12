@@ -1,0 +1,33 @@
+body {
+	background:url(http://cdn.mysitemyway.com/etc-mysitemyway/backgrounds/legacy-previews/backgrounds/starfield/starfield-002482-gray-black.jpg);
+	padding: 50px;
+	color: #FFFFFF;
+	font-family: 'Merienda One', serif;
+}
+
+h1 {
+	font-size: 30px;
+	color: #FFFFFF;
+	/*Neon effect modified from Google's font effects API
+	- https://fonts.googleapis.com/css?family=Merienda+One&effect=neon*/
+	/*Green*/
+	text-shadow: 0 0 0.05em #fff, 0 0 0.1em #fff, 0 0 0.15em #fff, 0 0 0.2em #05B500,0 0 0.3em #01D500, 0 0 0.4em #01D500, 0 0 .5em #01D500, 0 0 .6em #01D500;
+}
+
+h2 {
+	font-size: 25px;
+	color: #FFFFFF;
+	/*Red*/
+	text-shadow: 0 0 0.05em #fff, 0 0 .1em #fff, 0 0 0.15em #fff, 0 0 .2em #CD006F,0 0 .3em #D91700, 0 0 .4em #D91700, 0 0 .5em #D91700, 0 0 0.6em #D91700;
+}
+
+h4 {
+	font-size: 20px;
+	color: #FFFFFF;
+	/*Blue*/
+	text-shadow: 0 0 0.05em #fff, 0 0 0.1em #fff, 0 0 0.15em #fff, 0 0 0.20em #2533A3,0 0 0.3em #2F40CD, 0 0 0.4em #3A50FF, 0 0 .5em #3A50FF, 0 0 .60em #3A50FF;
+}
+
+p {
+	 line-height: 25px;
+}
