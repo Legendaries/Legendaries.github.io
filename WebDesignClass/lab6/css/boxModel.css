@@ -40,24 +40,6 @@ div#box3 {
 }
 
 div#box4 {
-	float: left;
-	padding: 0px;
-	margin: 0px;
-	width: 330px;
-	height: 300px;
-	line-height: 300px;
-}
-
-div#box5 {
-	float: left;
-	padding: 0px;
-	margin: 0px;
-	width: 330px;
-	height: 300px;
-	line-height: 300px;
-}
-
-div#box6 {
 	padding: 0px;
 	margin: 0px;
 	width: 500px;
@@ -66,7 +48,7 @@ div#box6 {
 	float:left;
 }
 
-div#box7 {
+div#box5 {
 	padding: 0px;
 	margin: 0px;
 	width: 500px;
@@ -79,7 +61,7 @@ p {
 	transform: rotateZ(90deg);
 }
 
-div#box8 {
+div#box6 {
 	float:left;
 	padding: 0px;
 	margin: 0px;
@@ -88,7 +70,7 @@ div#box8 {
 	line-height: 300px;
 }
 
-div#box9 {
+div#box7 {
 	padding: 0px;
 	margin: 0px;
 	width: 700px;
