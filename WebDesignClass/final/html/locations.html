@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> James & Sons Locations</title>
+		,<!--<link rel="stylesheet" href="css/main.css" type="text/css">-->
+		<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+		<script>
+			function myMap() {
+			  var mapCanvas = document.getElementById("map");
+			  var mapOptions = {
+				center: new google.maps.LatLng(51.5, -0.2), zoom: 1
+			  };
+			  var map = new google.maps.Map(mapCanvas, mapOptions);
+			  var marker = new google.maps.Marker({position: new google.maps.LatLng(56.2639, 9.5018), map: map, title: 'Denmark'});
+			  var marker = new google.maps.Marker({position: new google.maps.LatLng(20.5937, 78.9629), map: map, title: 'India'});
+			  var marker = new google.maps.Marker({position: new google.maps.LatLng(35.8617, 104.1954), map: map, title: 'China'});
+			  var marker = new google.maps.Marker({position: new google.maps.LatLng(45.6770, -111.0429), map: map, title: 'U.S.'});
+			}
+		</script>
+	</head>
+	<body onload = "myMap()">
+		<div id="map" style="width:400px;background-attachment: fixed;height:400px;background:yellow">
+	</body>
+</html>
