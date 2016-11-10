@@ -18,8 +18,27 @@
 			  var marker = new google.maps.Marker({position: new google.maps.LatLng(45.6770, -111.0429), map: map, title: 'U.S.'});
 			}
 		</script>
+		
+		<script>
+			function checkNavBar (){
+				if(event.clientX < 25)
+					document.getElementById("sideNav").style.width = "250px";
+				else if(event.clientX > 250)
+					document.getElementById("sideNav").style.width = "0px";
+			}
+		</script>
+		
+		<link rel="stylesheet" href="../css/nav.css" type="text/css">
 	</head>
-	<body onload = "myMap()">
+	<body onload = "myMap(); document.addEventListener('mousemove', checkNavBar);" onunload = "alert('test')">
+	<div class = "nav" id = "sideNav">
+		<a href = "../index.html"> Home </a>
+		<a href = "#"> Services </a>
+		<a href = "#"> Roofs </a>
+		<a href = "#"> International </a>
+		<a href = "#"> About </a>
+		<a href = "#"> Featured Projects </a>
+	</div>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap"
 	  async defer>
 	</script>

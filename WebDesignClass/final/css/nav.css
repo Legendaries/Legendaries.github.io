@@ -1,0 +1,33 @@
+div.nav {
+	height: 100%;
+	width: 0px;
+	position: fixed;
+	z-index: 1;
+	top:0px;
+	left:0px;
+	background-color: #111;
+	overflow-x:hidden;
+	padding-top: 30px;
+	transition: 0.5s;
+}
+
+div.nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+img#logo {
+	width: 20%;
+	height: 15%;
+	padding: 10px;
+}
+
+h1 {
+	position: inline;
+}
