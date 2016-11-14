@@ -15,6 +15,7 @@ function whichTransitionEvent(){
             return transitions[t];
 }
 function redirect (site){
+	document.getElementById("content").style.marginLeft = "100%";
 	document.getElementById("overlay").style.zIndex = "1";
 	document.getElementById("overlay").style.background = "rgba(0,0,0,0.7)";
 	website = site;
@@ -23,8 +24,8 @@ function redirect (site){
 }
 
 function initDisplay (){
+	document.getElementById("content").style.marginLeft = "50px";
 	document.getElementById('overlay').style.background = 'rgba(0,0,0,0.0)';
-	
 	var transitionEnd = whichTransitionEvent();
 	document.getElementById("overlay").addEventListener(transitionEnd, function (){document.getElementById('overlay').style.zIndex = '-1';}, false);
 }

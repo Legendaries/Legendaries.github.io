@@ -24,7 +24,7 @@ div.nav {
 
 div#content {
 	text-align:center;
-	margin-left: 50px;
+	margin-left: 100%;
 	transition: margin-left .5s;
 	padding: 20px;
 }
