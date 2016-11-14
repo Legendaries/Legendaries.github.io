@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="css/main.css" type="text/css">
 		<link rel="stylesheet" href="css/nav.css" type="text/css">
 		<link rel="stylesheet" href="css/slideshow.css" type="text/css">
+		<script src="js/main.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!--<link rel="icon" type="image/x-icon" href="res/favicon.ico"> -->
 		
 		<script>
@@ -33,19 +35,6 @@
 			  }
 			  slides[slideIndex-1].style.display = "block"; 
 			  dots[slideIndex-1].className += " active";
-			}
-		
-		
-			function checkNavBar (){
-				if(event.clientX < 25) {
-					document.getElementById("sideNav").style.width = "250px";
-					document.getElementById("content").style.marginLeft = "250px";
-					document.getElementById("openSymbol").style.visibility = "hidden";
-				} else if(event.clientX > 250) {
-					document.getElementById("sideNav").style.width = "25px";
-					document.getElementById("content").style.marginLeft = "25px";
-					document.getElementById("openSymbol").style.visibility = "visible";
-				}
 			}
 		</script>
 	</head>
@@ -93,7 +82,7 @@
 		<form action = "#" id = "userForm">
 			<table style="width:100%">
 				<tr> <th>First Name: </th><th><input type="text" name="fname"></th> </tr>
-				<tr> <th>Last name:</th><th><input type="text" name="lname"></th> </tr>
+				<tr> <th>Last Name:</th><th><input type="text" name="lname"></th> </tr>
 				<tr> <th>Email:</th><th><input type="text" name="email"></th> </tr>
 			</table>
 			<input id = "submit" type="submit" value="Submit">

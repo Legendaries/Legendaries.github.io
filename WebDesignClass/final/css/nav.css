@@ -9,6 +9,7 @@ div.nav {
 	overflow-x:hidden;
 	padding-top: 30px;
 	transition: 0.5s;
+	font-family: 'Roboto', sans-serif;
 }
 
 /* Position and style the close button (top right corner) */
