@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>James & Sons Home</title>
+		<link rel="stylesheet" href="../css/main.css" type="text/css">
+		<link rel="stylesheet" href="../css/nav.css" type="text/css">
+		
+		<script>
+			function checkNavBar (){
+				if(event.clientX < 25) {
+					document.getElementById("sideNav").style.width = "250px";
+					document.getElementById("content").style.marginLeft = "250px";
+				} else if(event.clientX > 250) {
+					document.getElementById("sideNav").style.width = "25px";
+					document.getElementById("content").style.marginLeft = "25px";
+				}
+			}
+		</script>
+	</head>
+	<body>
+	<div id = "content">
+		<script>
+			document.addEventListener("mousemove", checkNavBar);
+		</script>
+		<!--Header-->
+		<img id = "logo" width = "200" height = "200" src = "../images/james-and-sons.png"/>
+		<!--Nav bar-->
+		<div class = "nav" id = "sideNav">
+			<a href = "../index.html"> Home </a>
+			<a href = "#"> Services </a>
+			<a href = "#"> Roofs </a>
+			<!--<div onclick = "window.location = 'html/locations.html'">-->
+			<a href = "../html/locations.html"> International </a>
+			<a href = "#"> About </a>
+			<a href = "#"> Featured Projects </a>
+		</div>
+		<hr>
+		
+		<a class = "clear" href = "html/locations.html">Locations</a>
+		<a href = "http://www.w3schools.com/howto/howto_js_slideshow.asp"> Slideshow</a>
+		<a href = "http://www.w3schools.com/howto/tryhow_css_parallax_demo.htm"> Parallax </a>
+		<a href = "http://www.w3schools.com/howto/howto_js_sidenav.asp"> Nav bar </a>
+		<!--Footer-->
+	</div>
+	</body>
+</html>

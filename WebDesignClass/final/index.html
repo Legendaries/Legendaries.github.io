@@ -5,38 +5,106 @@
 		<title>James & Sons Home</title>
 		<link rel="stylesheet" href="css/main.css" type="text/css">
 		<link rel="stylesheet" href="css/nav.css" type="text/css">
+		<link rel="stylesheet" href="css/slideshow.css" type="text/css">
+		<!--<link rel="icon" type="image/x-icon" href="res/favicon.ico"> -->
 		
 		<script>
-			function checkNavBar (){
-				if(event.clientX < 25)
-					document.getElementById("sideNav").style.width = "250px";
-				else if(event.clientX > 250)
-					document.getElementById("sideNav").style.width = "0px";
+			var slideIndex = 1;
+
+			function plusSlides(n) {
+			  showSlides(slideIndex += n);
 			}
+
+			function currentSlide(n) {
+			  showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+			  var i;
+			  var slides = document.getElementsByClassName("mySlides");
+			  var dots = document.getElementsByClassName("dot");
+			  if (n > slides.length) {slideIndex = 1} 
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+				  slides[i].style.display = "none"; 
+			  }
+			  for (i = 0; i < dots.length; i++) {
+				  dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block"; 
+			  dots[slideIndex-1].className += " active";
+			}
+		
+		
+			function checkNavBar (){
+				if(event.clientX < 25) {
+					document.getElementById("sideNav").style.width = "250px";
+					document.getElementById("content").style.marginLeft = "250px";
+					document.getElementById("openSymbol").style.visibility = "hidden";
+				} else if(event.clientX > 250) {
+					document.getElementById("sideNav").style.width = "25px";
+					document.getElementById("content").style.marginLeft = "25px";
+					document.getElementById("openSymbol").style.visibility = "visible";
+				}
+			}
+			
+			
 		</script>
 	</head>
-	<body>
-	<script>
-		document.addEventListener("mousemove", checkNavBar);
-	</script>
+	<body onload = "showSlides(slideIndex);">
+	<div id = "content">
+		<script>
+			document.addEventListener("mousemove", checkNavBar);
+		</script>
 		<!--Header-->
 		<img id = "logo" width = "200" height = "200" src = "images/james-and-sons.png"/>
 		<!--Nav bar-->
 		<div class = "nav" id = "sideNav">
+			<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
 			<a href = "#"> Home </a>
 			<a href = "#"> Services </a>
 			<a href = "#"> Roofs </a>
+			<!--<div onclick = "window.location = 'html/locations.html'">-->
 			<a href = "html/locations.html"> International </a>
-			<a href = "#"> About </a>
+			<a href = "html/about.html"> About </a>
 			<a href = "#"> Featured Projects </a>
 		</div>
+		<hr>
 		
+		<div class="slideshow-container">
+			<script>
+			var captions = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"];
+			for(i = 1; i < 9; i++)
+				document.write (' <div class="mySlides fade"> <div class="numbertext">' + i + ' / 8</div> <img src="images/' + i + '.png" style="width:100%"> <div class="text">' + captions[i-1] + '</div> </div> ');
+			</script>
+
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<script>
+				for(i = 1; i < 9; i++)
+					document.write ('<span class="dot" onclick="currentSlide(' + i + ')"></span>');
+			</script>
+		</div>
+		<br>
 		
+		<p class = "left triple"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		<p class = "left triple"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+		<p class = "left triple"> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
 		
-		<a href = "html/locations.html">Locations</a>
-		<a href = "http://www.w3schools.com/howto/howto_js_slideshow.asp"> Slideshow</a>
-		<a href = "http://www.w3schools.com/howto/tryhow_css_parallax_demo.htm"> Parallax </a>
-		<a href = "http://www.w3schools.com/howto/howto_js_sidenav.asp"> Nav bar </a>
+		<form action = "#" id = "userForm">
+			<table style="width:100%">
+			<tr> <th>First Name: </th><th><input type="text" name="fname"></th> </tr>
+			<tr> <th>Last name:</th><th><input type="text" name="lname"></th> </tr>
+			<tr> <th>Email:</th><th><input type="text" name="email"></th> </tr>
+			</table>
+			<input id = "submit" type="submit" value="Submit">
+		</form>
+		<img id = "footer" src = "images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
 		<!--Footer-->
+	</div>
 	</body>
 </html>
