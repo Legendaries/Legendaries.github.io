@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title> James & Sons Locations</title>
+		<link rel="stylesheet" href="../css/main.css" type="text/css">
+		<link rel="stylesheet" href="../css/nav.css" type="text/css">
+		<link rel="stylesheet" href="../css/slideshow.css" type="text/css">
 		,<!--<link rel="stylesheet" href="css/main.css" type="text/css">-->
 		<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 		<script>
@@ -17,31 +20,47 @@
 			  var marker = new google.maps.Marker({position: new google.maps.LatLng(35.8617, 104.1954), map: map, title: 'China'});
 			  var marker = new google.maps.Marker({position: new google.maps.LatLng(45.6770, -111.0429), map: map, title: 'U.S.'});
 			}
-		</script>
-		
-		<script>
+			
 			function checkNavBar (){
-				if(event.clientX < 25)
+				if(event.clientX < 25) {
 					document.getElementById("sideNav").style.width = "250px";
-				else if(event.clientX > 250)
-					document.getElementById("sideNav").style.width = "0px";
+					document.getElementById("content").style.marginLeft = "250px";
+					document.getElementById("openSymbol").style.visibility = "hidden";
+				} else if(event.clientX > 250) {
+					document.getElementById("sideNav").style.width = "25px";
+					document.getElementById("content").style.marginLeft = "25px";
+					document.getElementById("openSymbol").style.visibility = "visible";
+				}
 			}
 		</script>
 		
 		<link rel="stylesheet" href="../css/nav.css" type="text/css">
 	</head>
 	<body onload = "myMap(); document.addEventListener('mousemove', checkNavBar);" onunload = "alert('test')">
-	<div class = "nav" id = "sideNav">
-		<a href = "../index.html"> Home </a>
-		<a href = "#"> Services </a>
-		<a href = "#"> Roofs </a>
-		<a href = "#"> International </a>
-		<a href = "#"> About </a>
-		<a href = "#"> Featured Projects </a>
-	</div>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap"
-	  async defer>
-	</script>
-		<div id="map" style="width:400px;background-attachment: fixed;height:400px;background:yellow">
+		<div id = "content">
+			<img id = "logo" width = "200" height = "200" src = "../images/james-and-sons.png"/>
+			<div class = "nav" id = "sideNav">
+				<a href = "../index.html"> Home </a>
+				<a href = "../html/services.html"> Services </a>
+				<a href = "#"> Roofs </a>
+				<a href = "#"> International </a>
+				<a href = "../html/about.html"> About </a>
+				<a href = "#"> Featured Projects </a>
+			</div>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap"
+			  async defer>
+			</script>
+			
+			<div id="map" style="width:400px;background-attachment: fixed;height:400px;background:yellow">
+			<form action = "#" id = "userForm">
+				<table style="width:100%">
+					<tr> <th>First Name: </th><th><input type="text" name="fname"></th> </tr>
+					<tr> <th>Last name:</th><th><input type="text" name="lname"></th> </tr>
+					<tr> <th>Email:</th><th><input type="text" name="email"></th> </tr>
+				</table>
+				<input id = "submit" type="submit" value="Submit">
+			</form>
+			<img id = "footer" src = "images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
+		</div>
 	</body>
 </html>
