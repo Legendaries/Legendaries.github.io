@@ -1,6 +1,6 @@
 div.nav {
 	height: 100%;
-	width: 25px;
+	width: 50px;
 	position: fixed;
 	z-index: 1;
 	top:0px;
@@ -16,7 +16,7 @@ div.nav {
 .nav #openSymbol {
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: 10px;
     font-size: 36px;
     margin-left: 50px;
 	transition: visibility 0s;
@@ -24,14 +24,14 @@ div.nav {
 
 div#content {
 	text-align:center;
-	margin-left: 25px;
+	margin-left: 50px;
 	transition: margin-left .5s;
 	padding: 20px;
 }
 
 div.nav a{
 	text-align:left;
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 64px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;

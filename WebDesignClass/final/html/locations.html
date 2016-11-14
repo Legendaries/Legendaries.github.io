@@ -8,6 +8,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		,<!--<link rel="stylesheet" href="css/main.css" type="text/css">-->
 		<script src="../js/main.js"></script>
+		<script src="../js/nav.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 		<script>
 			function myMap() {
@@ -25,16 +26,18 @@
 		
 		<link rel="stylesheet" href="../css/nav.css" type="text/css">
 	</head>
-	<body onload = "myMap(); document.addEventListener('mousemove', checkNavBar);" onunload = "alert('test')">
+	<body onload = "initDisplay(); myMap(); document.addEventListener('mousemove', checkNavBar);" onunload = "alert('test')">
+		<div id = "overlay"></div>
 		<div id = "content">
 			<img id = "logo" width = "200" height = "200" src = "../images/james-and-sons.png"/>
 			<div class = "nav" id = "sideNav">
-				<a href = "../index.html"> Home </a>
-				<a href = "../html/services.html"> Services </a>
-				<a href = "#"> Roofs </a>
-				<a href = "#"> International </a>
-				<a href = "../html/about.html"> About </a>
-				<a href = "#"> Featured Projects </a>
+				<a href="javascript:void(0)" id = "openSymbol">&#10095;</a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Services </a>
+				<a class = "navLink" href = "#"> Roofing </a>
+				<a class = "navLink" href = "#"> International </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/about.html")'> About </a>
+				<a class = "navLink" href = "#"> Featured Projects </a>
 			</div>
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap"
 			  async defer>

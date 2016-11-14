@@ -8,24 +8,22 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!--<link rel="icon" type="image/x-icon" href="res/favicon.ico"> -->
 		<script src="../js/main.js"></script>
+		<script src="../js/nav.js"></script>
 	</head>
-	<body onload = "showSlides(slideIndex);">
+	<body onload = "initDisplay(); document.addEventListener('mousemove', checkNavBar);">
+	<div id = "overlay"></div>
 	<div id = "content">
-		<script>
-			document.addEventListener("mousemove", checkNavBar);
-		</script>
 		<!--Header-->
 		<img id = "logo" width = "200" height = "200" src = "../images/james-and-sons.png"/>
 		<!--Nav bar-->
 		<div class = "nav" id = "sideNav">
 			<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
-			<a href = "../index.html"> Home </a>
-			<a href = "#"> Services </a>
-			<a href = "#"> Roofs </a>
-			<!--<div onclick = "window.location = 'html/locations.html'">-->
-			<a href = "../html/locations.html"> International </a>
-			<a href = "../html/about.html"> About </a>
-			<a href = "#"> Featured Projects </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
+			<a class = "navLink" href = "#"> Services </a>
+			<a class = "navLink" href = "#"> Roofing </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("../html/locations.html")'> International </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("../html/about.html")'> About </a>
+			<a class = "navLink" href = "#"> Featured Projects </a>
 		</div>
 		<hr>
 		

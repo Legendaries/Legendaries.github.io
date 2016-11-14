@@ -7,11 +7,12 @@
 		<link rel="stylesheet" href="css/nav.css" type="text/css">
 		<link rel="stylesheet" href="css/slideshow.css" type="text/css">
 		<script src="js/main.js"></script>
+		<script src="js/nav.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!--<link rel="icon" type="image/x-icon" href="res/favicon.ico"> -->
 		
 		<script>
-			var slideIndex = 1;
+			var slideIndex = 0;
 
 			function plusSlides(n) {
 			  showSlides(slideIndex += n);
@@ -27,39 +28,42 @@
 			  var dots = document.getElementsByClassName("dot");
 			  if (n > slides.length) {slideIndex = 1} 
 			  if (n < 1) {slideIndex = slides.length}
-			  for (i = 0; i < slides.length; i++) {
+			  for (i = 0; i < slides.length; i++)
 				  slides[i].style.display = "none"; 
-			  }
-			  for (i = 0; i < dots.length; i++) {
+			  for (i = 0; i < dots.length; i++)
 				  dots[i].className = dots[i].className.replace(" active", "");
-			  }
 			  slides[slideIndex-1].style.display = "block"; 
 			  dots[slideIndex-1].className += " active";
 			}
+			
+			function passiveIncrement (){
+				showSlides(++slideIndex);
+				setTimeout(passiveIncrement, 10000); 
+			}
 		</script>
 	</head>
-	<body onload = "showSlides(slideIndex); document.addEventListener('mousemove', checkNavBar);">
+	<body onload = "initDisplay(); passiveIncrement(); document.addEventListener('mousemove', checkNavBar);">
+	<div id = "overlay"></div>
 	<div id = "content">
 		<!--Header-->
 		<img id = "logo" width = "200" height = "200" src = "images/james-and-sons.png"/>
 		<!--Nav bar-->
 		<div class = "nav" id = "sideNav">
-			<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
-			<a href = "#"> Home </a>
-			<a href = "html/services.html"> Services </a>
-			<a href = "#"> Roofs </a>
-			<!--<div onclick = "window.location = 'html/locations.html'">-->
-			<a href = "html/locations.html"> International </a>
-			<a href = "html/about.html"> About </a>
-			<a href = "#"> Featured Projects </a>
+			<a href="javascript:void(0)" id = "openSymbol">&#10095;</a>
+			<a class = "navLink" href = "#"> Home </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("html/services.html")'> Services </a>
+			<a class = "navLink" href = "#"> Roofing </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("html/locations.html")'> International </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("html/about.html")'> About </a>
+			<a class = "navLink" href = "#"> Featured Projects </a>
 		</div>
 		<hr>
 		
 		<div class="slideshow-container">
 			<script>
-			var captions = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"];
-			for(i = 1; i < 9; i++)
-				document.write (' <div class="mySlides fade"> <div class="numbertext">' + i + ' / 8</div> <img src="images/' + i + '.png" style="width:100%"> <div class="text">' + captions[i-1] + '</div> </div> ');
+				var captions = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"];
+				for(i = 1; i < 9; i++)
+					document.write (' <div class="mySlides fade"> <div class="numbertext">' + i + ' / 8</div> <img src="images/' + i + '.png" style="width:100%"> <div class="text">' + captions[i-1] + '</div> </div> ');
 			</script>
 
 			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>

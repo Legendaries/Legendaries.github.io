@@ -28,6 +28,18 @@ img#footer {
 	padding-bottom: 50px;
 }
 
+#overlay {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0px;
+    left: 0px;
+	transition: background 0.5s;
+    background: rgba(0, 0, 0, 0.7);
+}
+
 .triple{
 	width: 29%;
 	padding-left:2%;
