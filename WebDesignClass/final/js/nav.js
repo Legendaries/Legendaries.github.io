@@ -24,12 +24,10 @@ function initNav (){
 		style = document.createElement('style');
 
 		style.type = 'text/css';
-		if (style.styleSheet){
+		if (style.styleSheet)
 		  style.styleSheet.cssText = css;
-		} else {
+		else
 		  style.appendChild(document.createTextNode(css));
-		}
-
 		head.appendChild(style);
 	}
 }

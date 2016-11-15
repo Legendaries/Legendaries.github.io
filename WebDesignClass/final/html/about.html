@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>James & Sons Home</title>
+		<title>About James & Sons</title>
 		<link rel="stylesheet" href="../css/main.css" type="text/css">
 		<link rel="stylesheet" href="../css/nav.css" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -10,27 +10,23 @@
 		<script src="../js/main.js"></script>
 		<script src="../js/nav.js"></script>
 	</head>
-	<body onload = "initNav(); initDisplay(); document.addEventListener('mousemove', checkNavBar);">
+	<body style = "height:2000px;" onload = "initNav(); initDisplay(); document.addEventListener('mousemove', checkNavBar);">
 	<div id = "overlay"></div>
 	<div id = "content">
 		<!--Header-->
-		<img id = "logo" width = "200" height = "200" src = "../images/james-and-sons.png"/>
+		<img id = "logo" src = "../images/james-and-sons.png"/>
 		<!--Nav bar-->
 		<div class = "nav" id = "sideNav">
 			<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
 			<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
 			<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Services </a>
-			<a class = "navLink" href = "#"> Roofing </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("../html/roofing.html")'> Roofing </a>
 			<a class = "navLink" href = "#" onclick = 'redirect("../html/locations.html")'> International </a>
 			<a class = "navLink" href = "#"> About </a>
-			<a class = "navLink" href = "#"> Featured Projects </a>
+			<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Featured Projects </a>
 		</div>
 		<hr>
 		
-		<a class = "clear" href = "html/locations.html">Locations</a>
-		<a href = "http://www.w3schools.com/howto/howto_js_slideshow.asp"> Slideshow</a>
-		<a href = "http://www.w3schools.com/howto/tryhow_css_parallax_demo.htm"> Parallax </a>
-		<a href = "http://www.w3schools.com/howto/howto_js_sidenav.asp"> Nav bar </a>
 		<!--Footer-->
 	</div>
 	</body>

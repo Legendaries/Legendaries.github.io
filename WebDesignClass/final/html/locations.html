@@ -7,15 +7,13 @@
 		<link rel="stylesheet" href="../css/nav.css" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="../images/james-and-sons.png">
-		,<!--<link rel="stylesheet" href="css/main.css" type="text/css">-->
 		<script src="../js/main.js"></script>
 		<script src="../js/nav.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 		<script>
-			function myMap() {
+			function initMap() {
 			  var mapCanvas = document.getElementById("map");
 			  var mapOptions = {
-				center: new google.maps.LatLng(51.5, -0.2), zoom: 1
+				center: new google.maps.LatLng(51.5, -0.2), zoom: 2
 			  };
 			  var map = new google.maps.Map(mapCanvas, mapOptions);
 			  var marker = new google.maps.Marker({position: new google.maps.LatLng(56.2639, 9.5018), map: map, title: 'Denmark'});
@@ -24,27 +22,28 @@
 			  var marker = new google.maps.Marker({position: new google.maps.LatLng(45.6770, -111.0429), map: map, title: 'U.S.'});
 			}
 		</script>
-		
-		<link rel="stylesheet" href="../css/nav.css" type="text/css">
+		<style>
+		body {
+			height: 5000px;
+		}
+		</style>
 	</head>
-	<body onload = "initNav(); initDisplay(); myMap(); document.addEventListener('mousemove', checkNavBar);" onunload = "alert('test')">
+	<body onload = "initNav(); initDisplay(); document.addEventListener('mousemove', checkNavBar);">
 		<div id = "overlay"></div>
 		<div id = "content">
-			<img id = "logo" width = "200" height = "200" src = "../images/james-and-sons.png"/>
+			<img id = "logo" src = "../images/james-and-sons.png"/>
 			<div class = "nav" id = "sideNav">
 				<a href="javascript:void(0)" id = "openSymbol">&#10095;</a>
 				<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
 				<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Services </a>
-				<a class = "navLink" href = "#"> Roofing </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/roofing.html")'> Roofing </a>
 				<a class = "navLink" href = "#"> International </a>
 				<a class = "navLink" href = "#" onclick = 'redirect("../html/about.html")'> About </a>
-				<a class = "navLink" href = "#"> Featured Projects </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Featured Projects </a>
 			</div>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap"
-			  async defer>
-			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap" async defer> </script>
 			
-			<div id="map" style="width:400px;background-attachment: fixed;height:400px;background:yellow">
+			<div id="map" style="width:800px; height:800px;margin: auto; background:yellow">
 			<form action = "#" id = "userForm">
 				<table style="width:100%">
 					<tr> <th>First Name: </th><th><input type="text" name="fname"></th> </tr>
@@ -53,7 +52,7 @@
 				</table>
 				<input id = "submit" type="submit" value="Submit">
 			</form>
-			<img id = "footer" src = "images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
+			<img id = "footer" src = "../images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
 		</div>
 	</body>
 </html>
