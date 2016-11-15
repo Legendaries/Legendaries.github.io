@@ -15,3 +15,21 @@ function checkNavBar (){
 		document.getElementById("openSymbol").style.visibility = "visible";
 	}
 }
+
+function initNav (){
+	var navElements = document.getElementsByClassName("navLink");
+	for(i = 1; i <= navElements.length+1; i++) {
+		var css = "div.nav a:nth-child(" + i + "){ transition: padding " + ((i * .25) + 1) + "s; }",
+		head = document.head || document.getElementsByTagName('head')[0],
+		style = document.createElement('style');
+
+		style.type = 'text/css';
+		if (style.styleSheet){
+		  style.styleSheet.cssText = css;
+		} else {
+		  style.appendChild(document.createTextNode(css));
+		}
+
+		head.appendChild(style);
+	}
+}
