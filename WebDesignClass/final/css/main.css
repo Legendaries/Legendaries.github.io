@@ -25,7 +25,7 @@ img#form {
 	width: 30%;
 	margin-left: 15%;
 	margin-right: 15%;
-	padding-bottom: 50px;
+	margin-bottom: 50px;
 }
 
 #overlay {
@@ -42,8 +42,8 @@ img#form {
 
 .triple{
 	width: 29%;
-	padding-left:2%;
-	padding-right:2%;
+	margin-left:2%;
+	margin-right:2%;
 }
 
 .left {
@@ -56,7 +56,7 @@ img#form {
 
 form {
 	text-align:left;
-	padding-top: 2.5%;
+	padding-top: 0.5%;
 	width: 33%;
 	margin: 0px;
 	margin-left: 5%;
@@ -71,6 +71,30 @@ input {
 
 table#submit {
 	width: 88%;
+}
+
+img {
+	border-radius: 25px;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+img.round {
+	border-radius: 50px;
+	margin-bottom: 10px;
+	/*box-shadow: 0px 0px 17px 2px rgba(0,0,0,0.57);*/
+	/*box-shadow: #B3B3B3 10px 10px 10px;*/
+	box-shadow: 0px 0px 17px 2px rgba(0,0,0,1);
+	/*box-shadow: 0px 0px 17px 2px rgba(0,0,0,1), 10px 10px 10px #B3B3B3, 0px 0px 17px 2px rgba(0,0,0,0.57);*/
+	transition: border-radius 1s;
+}
+
+hr {
+	margin-bottom: 20px;
+}
+
+img.round:hover {
+	border-radius: 50% !important;
 }
 
 img#logo {
