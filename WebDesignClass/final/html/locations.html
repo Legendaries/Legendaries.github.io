@@ -7,20 +7,171 @@
 		<link rel="stylesheet" href="../css/nav.css" type="text/css">
 		<link rel="stylesheet" href="../css/footer.css" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="../images/james-and-sons.png">
 		<script src="../js/main.js"></script>
 		<script src="../js/nav.js"></script>
 		<script>
 			function initMap() {
-			  var mapCanvas = document.getElementById("map");
-			  var mapOptions = {
-				center: new google.maps.LatLng(31.5, -0.2), zoom: 2
-			  };
-			  var map = new google.maps.Map(mapCanvas, mapOptions);
-			  var marker = new google.maps.Marker({position: new google.maps.LatLng(56.2639, 9.5018), map: map, title: 'Denmark'});
-			  var marker = new google.maps.Marker({position: new google.maps.LatLng(20.5937, 78.9629), map: map, title: 'India'});
-			  var marker = new google.maps.Marker({position: new google.maps.LatLng(35.8617, 104.1954), map: map, title: 'China'});
-			  var marker = new google.maps.Marker({position: new google.maps.LatLng(45.6770, -111.0429), map: map, title: 'U.S.'});
+				var mapCanvas = document.getElementById("map");
+				var mapOptions = {
+					center: new google.maps.LatLng(31.5, -0.2), zoom: 2
+				};
+				var map = new google.maps.Map(mapCanvas, mapOptions);
+				//                               denmark                                        india                  china                                us new google.maps.LatLng(35.8617, 104.1954)
+				//var locations = [new google.maps.LatLng(56.2639, 9.5018), new google.maps.LatLng(20.5937, 78.9629)/*, new google.maps.LatLng(35.8617, 104.1954),*/ /*new google.maps.LatLng(39.8282, -98.5795)*/];
+				//var radius = [200000, 1000000/*, 1500000*//*, 1000000*/];
+				//for(i = 0; i < locations.length; i++)
+//					var marker = new google.maps.Marker({position: locations[i], map: map, title: ''});
+	/*		  
+				for(i = 0; i < locations.length; i++)
+					var cityCircle = new google.maps.Circle({
+						strokeColor: '#FF0000',
+						strokeOpacity: 0.8,
+						strokeWeight: 2,
+						fillColor: '#FF0000',
+						fillOpacity: 0.35,
+						map: map,
+						center: locations[i],
+						radius: radius[i]
+					});
+					*/
+					
+				var myCoordinates = [
+					new google.maps.LatLng(26.115986,-97.558594),
+					new google.maps.LatLng(26.745610,-99.140625),
+					new google.maps.LatLng(29.688053,-101.250000),
+					new google.maps.LatLng(29.075375,-102.656250),
+					new google.maps.LatLng(29.535230,-104.589844),
+					new google.maps.LatLng(31.503629,-106.699219),
+					new google.maps.LatLng(31.503629,-108.281250),
+					new google.maps.LatLng(31.503629,-112.675781),
+					new google.maps.LatLng(32.546813,-114.433594),
+					new google.maps.LatLng(32.546813,-117.421875),
+					new google.maps.LatLng(34.016242,-120.234375),
+					new google.maps.LatLng(40.313043,-124.628906),
+					new google.maps.LatLng(42.682435,-124.628906),
+					new google.maps.LatLng(48.224673,-125.156250),
+					new google.maps.LatLng(48.458352,-123.574219),
+					new google.maps.LatLng(48.922499,-123.574219),
+					new google.maps.LatLng(49.037868,-95.273438),
+					new google.maps.LatLng(47.989922,-90.175781),
+					new google.maps.LatLng(48.224673,-88.769531),
+					new google.maps.LatLng(45.213004,-82.617188),
+					new google.maps.LatLng(41.902277,-82.792969),
+					new google.maps.LatLng(42.682435,-79.277344),
+					new google.maps.LatLng(43.580391,-79.277344),
+					new google.maps.LatLng(43.834527,-76.816406),
+					new google.maps.LatLng(45.213004,-75.585938),
+					new google.maps.LatLng(45.089036,-72.070313),
+					new google.maps.LatLng(47.279229,-69.257813),
+					new google.maps.LatLng(47.279229,-68.027344),
+					new google.maps.LatLng(46.073231,-68.027344),
+					new google.maps.LatLng(44.715514,-67.148438),
+					new google.maps.LatLng(42.940339,-71.015625),
+					new google.maps.LatLng(41.902277,-69.785156),
+					new google.maps.LatLng(40.713956,-73.476563),
+					new google.maps.LatLng(38.272689,-74.707031),
+					new google.maps.LatLng(37.020098,-75.937500),
+					new google.maps.LatLng(35.746512,-75.585938),
+					new google.maps.LatLng(31.203405,-81.386719),
+					new google.maps.LatLng(26.273714,-79.804688),
+					new google.maps.LatLng(25.165173,-80.859375),
+					new google.maps.LatLng(27.994401,-82.968750),
+					new google.maps.LatLng(29.382175,-82.968750),
+					new google.maps.LatLng(29.993002,-84.375000),
+					new google.maps.LatLng(30.145127,-89.648438),
+					new google.maps.LatLng(29.535230,-89.296875),
+					new google.maps.LatLng(29.228890,-94.746094),
+					new google.maps.LatLng(27.839076,-97.207031),
+					new google.maps.LatLng(26.115986,-97.031250)
+				];
+				var polyOptions = {
+					path: myCoordinates,
+					strokeColor: "#FF0000",
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: "#0000FF",
+					fillOpacity: 0.6
+				}
+				var it = new google.maps.Polygon(polyOptions);
+				it.setMap(map);
+			
+				var myCoordinates = [
+					new google.maps.LatLng(8.407168,76.992188),
+					new google.maps.LatLng(11.523088,75.585938),
+					new google.maps.LatLng(20.632784,72.421875),
+					new google.maps.LatLng(21.779905,72.246094),
+					new google.maps.LatLng(20.632784,70.664063),
+					new google.maps.LatLng(21.779905,69.433594),
+					new google.maps.LatLng(23.725012,68.730469),
+					new google.maps.LatLng(24.367114,70.488281),
+					new google.maps.LatLng(27.215556,69.433594),
+					new google.maps.LatLng(27.994401,70.664063),
+					new google.maps.LatLng(32.398516,75.058594),
+					new google.maps.LatLng(34.885931,73.828125),
+					new google.maps.LatLng(36.315125,73.300781),
+					new google.maps.LatLng(36.173357,77.519531),
+					new google.maps.LatLng(32.842674,78.925781),
+					new google.maps.LatLng(30.145127,80.683594),
+					new google.maps.LatLng(29.075375,80.332031),
+					new google.maps.LatLng(26.273714,87.890625),
+					new google.maps.LatLng(22.105999,88.945313),
+					new google.maps.LatLng(21.289374,87.011719),
+					new google.maps.LatLng(20.138470,86.660156),
+					new google.maps.LatLng(18.812718,84.726563),
+					new google.maps.LatLng(15.623037,80.507813),
+					new google.maps.LatLng(10.487812,79.980469),
+					new google.maps.LatLng(8.059230,77.167969)
+				];
+				var polyOptions = {
+					path: myCoordinates,
+					strokeColor: "#FF0000",
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: "#0000FF",
+					fillOpacity: 0.6
+				}
+				var it = new google.maps.Polygon(polyOptions);
+				it.setMap(map);
+			
+			
+				var myCoordinates = [
+					new google.maps.LatLng(54.901882,8.624268),
+					new google.maps.LatLng(55.416544,8.613281),
+					new google.maps.LatLng(55.584555,8.085938),
+					new google.maps.LatLng(56.854979,8.261719),
+					new google.maps.LatLng(57.154120,8.909912),
+					new google.maps.LatLng(57.177947,9.404297),
+					new google.maps.LatLng(57.580669,9.942627),
+					new google.maps.LatLng(57.615992,10.239258),
+					new google.maps.LatLng(57.780376,10.601807),
+					new google.maps.LatLng(57.545313,10.469971),
+					new google.maps.LatLng(57.267164,10.590820),
+					new google.maps.LatLng(56.926993,10.283203),
+					new google.maps.LatLng(56.601838,10.371094),
+					new google.maps.LatLng(56.529199,10.415039),
+					new google.maps.LatLng(56.535258,10.832520),
+					new google.maps.LatLng(56.468560,10.942383),
+					new google.maps.LatLng(56.029087,12.634277),
+					new google.maps.LatLng(54.958694,12.546387),
+					new google.maps.LatLng(54.572062,11.953125),
+					new google.maps.LatLng(54.705582,10.678711),
+					new google.maps.LatLng(54.832336,9.393311),
+					new google.maps.LatLng(54.813348,9.294434),
+					new google.maps.LatLng(54.889246,8.635254)
+				];
+				var polyOptions = {
+					path: myCoordinates,
+					strokeColor: "#FF0000",
+					strokeOpacity: 0.8,
+					strokeWeight: 2,
+					fillColor: "#0000FF",
+					fillOpacity: 0.6
+				}
+				var it = new google.maps.Polygon(polyOptions);
+				it.setMap(map);
 			}
 		</script>
 	</head>
@@ -40,9 +191,9 @@
 			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRmk9XPzaG3jjtYNcV6ZR2_2qqZhrTpAg&callback=initMap" async defer> </script>
 			<hr>
 			<h1> Major Locations </h1>
-			<h2 class = "left triple">Bozeman Montana US</h2>
-			<h2 class = "left triple">Denmark Germany</h2>
-			<h2 class = "left triple">Vasoli India</h2>
+			<h2 class = "left triple">United States</h2>
+			<h2 class = "left triple">Denmark</h2>
+			<h2 class = "left triple">India</h2>
 			
 			<p class = "left triple">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 			<p class = "left triple">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
@@ -58,7 +209,7 @@
 				</table>
 				<input id = "submit" type="submit" value="Submit">
 			</form>
-			<img id = "form" src = "../images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
+			<img id = "form" class = "semiround" src = "../images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
 		</div>
 		<!--Footer-->
 		<div id="footer">

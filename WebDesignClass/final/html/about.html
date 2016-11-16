@@ -11,14 +11,14 @@
 		<script src="../js/main.js"></script>
 		<script src="../js/nav.js"></script>
 	</head>
-	<body style = "height:2000px;" onload = "initNav(); initDisplay(); document.addEventListener('mousemove', checkNavBar);">
+	<body onload = "initNav(); initDisplay(); document.addEventListener('mousemove', checkNavBar);">
 		<div id = "overlay"></div>
 		<div id = "content">
 			<!--Header-->
 			<div class = "line"><span><img id = "logo" src = "../images/james-and-sons.png"/></div></span>
 			<!--Nav bar-->
 			<div class = "nav" id = "sideNav">
-				<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
+				<a href="javascript:void(0)" id = "openSymbol">&#10095;</a>
 				<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
 				<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Services </a>
 				<a class = "navLink" href = "#" onclick = 'redirect("../html/roofing.html")'> Roofing </a>
@@ -28,6 +28,16 @@
 			</div>
 			<hr>
 		</div>
+		<!--
+		https://css-tricks.com/gooey-effect/
+		http://tympanus.net/TipsTricks/DirectionAwareHoverEffect/
+		http://www.zachstronaut.com/lab/text-shadow-box/text-shadow-box2.html
+		http://paulrhayes.com/experiments/parallax/
+		http://tympanus.net/Tutorials/3DHoverEffects/index5.html
+		http://www.birdtheme.org/useful/v3largemap.html
+		-->
+		
+	
 		<!--Footer-->
 		<div id="footer">
 			<ul id = "footer_menu">

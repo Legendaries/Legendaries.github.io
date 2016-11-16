@@ -13,11 +13,31 @@
     background-size: cover;
 }
 
+html {
+	min-height:100%;
+}
+
 body {
 	background-image: url("../images/background3.jpg");
 	background-size: 100% 100%;
     background-repeat: no-repeat;
 	overflow-y:scroll;
+}
+
+h1 {
+	color:#394b6f;
+	font-family: 'Oswald', sans-serif;
+}
+
+h2 {
+	font-family: 'PT Sans Narrow', sans-serif;
+	letter-spacing: 3px;
+	background-color: #16336b;
+	color: transparent;
+	text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+	-webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
 }
 
 img#form {
@@ -74,9 +94,13 @@ table#submit {
 }
 
 img {
-	border-radius: 25px;
 	padding-left:0px;
 	padding-right:0px;
+}
+
+img.semiround {
+	box-shadow: 0px 0px 17px 2px rgba(0,0,0,1);
+	border-radius: 25px;
 }
 
 img.round {
@@ -86,7 +110,8 @@ img.round {
 	/*box-shadow: #B3B3B3 10px 10px 10px;*/
 	box-shadow: 0px 0px 17px 2px rgba(0,0,0,1);
 	/*box-shadow: 0px 0px 17px 2px rgba(0,0,0,1), 10px 10px 10px #B3B3B3, 0px 0px 17px 2px rgba(0,0,0,0.57);*/
-	transition: border-radius 1s;
+	transition: border-radius 1s, transform 1s;
+	transform: none;
 }
 
 hr {
@@ -94,7 +119,7 @@ hr {
 }
 
 img.round:hover {
-	border-radius: 50% !important;
+	border-radius: 50%;
 }
 
 img#logo {
@@ -120,7 +145,7 @@ img#logo {
   border-top: 1px solid #9a9a9a;
   border-bottom: 1px solid #eeeeee;
   top: 40%;
-  width: 45%;
+  width: 80%;
 }
 .line span:before {
   right: 60%;
