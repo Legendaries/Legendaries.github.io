@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="css/main.css" type="text/css">
 		<link rel="stylesheet" href="css/nav.css" type="text/css">
 		<link rel="stylesheet" href="css/slideshow.css" type="text/css">
+		<link rel="stylesheet" href="css/footer.css" type="text/css">
 		<script src="js/main.js"></script>
 		<script src="js/nav.js"></script>
 		<script src="js/slideshow.js"></script>
@@ -16,7 +17,7 @@
 		<div id = "overlay"></div>
 		<div id = "content">
 			<!--Header-->
-			<img id = "logo" src = "images/james-and-sons.png"/>
+			<div class = "line"><span><img id = "logo" src = "images/james-and-sons.png"/></div></span>
 			<!--Nav bar-->
 			<div class = "nav" id = "sideNav">
 				<a href="javascript:void(0)" id = "openSymbol">&#10095;</a>
@@ -33,7 +34,7 @@
 				<script>
 					var captions = ["test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8"];
 					for(i = 1; i < 9; i++)
-						document.write (' <div class="mySlides fade"> <div class="numbertext">' + i + ' / 8</div> <img src="images/' + i + '.png" style="width:100%"> <div class="text">' + captions[i-1] + '</div> </div> ');
+						document.write (' <div class="mySlides fade"> <div class="numbertext">' + i + ' / 8</div> <img src="images/home/' + i + '.png" style="width:100%"> <div class="text">' + captions[i-1] + '</div> </div> ');
 				</script>
 
 				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -61,8 +62,16 @@
 				</table>
 				<input id = "submit" type="submit" value="Submit">
 			</form>
-			<img id = "footer" src = "images/form.png" onclick = "document.getElementById('footer').style.left = '100px'"/>
-			<!--Footer-->
+			<img id = "form" src = "images/form.png"/>
+		</div>
+		<!--Footer-->
+		<div id="footer">
+			<ul id = "footer_menu">
+				<li class="first"><a href="#"></a></li></li>
+				<li class="icon"><a href="#"><img src = "images/footer/icon-facebook.png"/></a></li></li>
+				<li class="icon"><a href="#"><img src = "images/footer/twitter-icon.png"/></a></li></li>
+				<li class="icon"><a href="#"><img src = "images/footer/gmail-icon.png"/></a></li></li>
+			</ul>
 		</div>
 	</body>
 </html>

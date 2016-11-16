@@ -5,29 +5,37 @@
 		<title>About James & Sons</title>
 		<link rel="stylesheet" href="../css/main.css" type="text/css">
 		<link rel="stylesheet" href="../css/nav.css" type="text/css">
+		<link rel="stylesheet" href="../css/footer.css" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<link rel="icon" type="image/x-icon" href="../images/james-and-sons.png">
 		<script src="../js/main.js"></script>
 		<script src="../js/nav.js"></script>
 	</head>
 	<body style = "height:2000px;" onload = "initNav(); initDisplay(); document.addEventListener('mousemove', checkNavBar);">
-	<div id = "overlay"></div>
-	<div id = "content">
-		<!--Header-->
-		<img id = "logo" src = "../images/james-and-sons.png"/>
-		<!--Nav bar-->
-		<div class = "nav" id = "sideNav">
-			<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
-			<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
-			<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Services </a>
-			<a class = "navLink" href = "#" onclick = 'redirect("../html/roofing.html")'> Roofing </a>
-			<a class = "navLink" href = "#" onclick = 'redirect("../html/locations.html")'> International </a>
-			<a class = "navLink" href = "#"> About </a>
-			<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Featured Projects </a>
+		<div id = "overlay"></div>
+		<div id = "content">
+			<!--Header-->
+			<div class = "line"><span><img id = "logo" src = "../images/james-and-sons.png"/></div></span>
+			<!--Nav bar-->
+			<div class = "nav" id = "sideNav">
+				<a href="javascript:void(0)" id = "openSymbol"">&#10095;</a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../index.html")'>  Home </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Services </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/roofing.html")'> Roofing </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/locations.html")'> International </a>
+				<a class = "navLink" href = "#"> About </a>
+				<a class = "navLink" href = "#" onclick = 'redirect("../html/services.html")'> Featured Projects </a>
+			</div>
+			<hr>
 		</div>
-		<hr>
-		
 		<!--Footer-->
-	</div>
+		<div id="footer">
+			<ul id = "footer_menu">
+				<li class="first"><a href="#"></a></li></li>
+				<li class="icon"><a href="#"><img src = "../images/footer/icon-facebook.png"/></a></li></li>
+				<li class="icon"><a href="#"><img src = "../images/footer/twitter-icon.png"/></a></li></li>
+				<li class="icon"><a href="#"><img src = "../images/footer/gmail-icon.png"/></a></li></li>
+			</ul>
+		</div>
 	</body>
 </html>

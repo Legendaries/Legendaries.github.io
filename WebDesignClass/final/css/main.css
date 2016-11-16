@@ -20,7 +20,7 @@ body {
 	overflow-y:scroll;
 }
 
-img#footer {
+img#form {
 	float: left;
 	width: 30%;
 	margin-left: 15%;
@@ -56,7 +56,7 @@ img#footer {
 
 form {
 	text-align:left;
-	padding-top: 3%;
+	padding-top: 2.5%;
 	width: 33%;
 	margin: 0px;
 	margin-left: 5%;
@@ -70,7 +70,41 @@ input {
 }
 
 table#submit {
-	width: 88%
+	width: 88%;
+}
+
+img#logo {
+	width: 20%;
+	height: 15%;
+	padding: 10px;
+}
+
+.line {
+  line-height: 0.5;
+  text-align: center;
+  overflow: hidden;
+}
+.line span {
+  display: inline-block;
+  position: relative;  
+}
+.line span:before,
+.line span:after {
+  content: "";
+  position: absolute;
+  height: 0px;
+  border-top: 1px solid #9a9a9a;
+  border-bottom: 1px solid #eeeeee;
+  top: 40%;
+  width: 45%;
+}
+.line span:before {
+  right: 60%;
+  margin-right: 15px;
+}
+.line span:after {
+  left: 60%;
+  margin-left: 15px;
 }
 
 ::-webkit-scrollbar {

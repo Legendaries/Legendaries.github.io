@@ -42,15 +42,7 @@ div.nav a{
 }
 
 div.nav a:hover{
+	/*transition: padding-left 0.1s !important;
+	padding-left: 48px !important;*/
     color: #f1f1f1;
-}
-
-img#logo {
-	width: 20%;
-	height: 15%;
-	padding: 10px;
-}
-
-h1 {
-	position: inline;
 }
